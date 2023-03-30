@@ -91,7 +91,7 @@ def update_record(a_record_id, zone_id, ip, api_key):
                 "value": ip,
                 "ttl": 0,
                 "type": "A",
-                "name": "www",
+                "name": "@",
                 "zone_id": zone_id
             })
         )

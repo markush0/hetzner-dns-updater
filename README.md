@@ -38,5 +38,5 @@ You can see the FastAPI-Docs at http://yourlocalip:8000/docs.
 
 Alternatively you can run the container without docker-compose
 ```shell
-docker run markush0/hetzner-dns-updater:latest --env=user=youruser --env=password=yourpassword --env=target_host=example.com --env=api_key=yourapikey
+docker run markush0/hetzner-dns-updater:main --env=user=youruser --env=password=yourpassword --env=target_host=example.com --env=api_key=yourapikey
 ```
