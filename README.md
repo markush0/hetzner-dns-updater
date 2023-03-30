@@ -26,7 +26,7 @@ You can see the FastAPI-Docs at http://yourlocalip:8000/docs.
                - api_key=hetznerapikey
            ports:
                - '8000:8000'
-           image: markush0/hetzner-dns-updater:latest
+           image: markush0/hetzner-dns-updater:main
    ```
 2. Change your Fritz!Box DynDNS settings to "custom"
    1. Set your Update-URL to ```http://yourlocalip:8000/ip/?user=<username>&password=<pass>&host=<domain>&ip=<ipaddr>&ip6=<ip6addr>```
