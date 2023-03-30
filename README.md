@@ -2,6 +2,8 @@
 
 ## Fritz!Box Custom DynDNS-Client
 
+[![Docker Image CI](https://github.com/markush0/hetzner-dns-updater/actions/workflows/docker-image.yml/badge.svg)](https://github.com/markush0/hetzner-dns-updater/actions/workflows/docker-image.yml)
+
 If you have the nameserver of your domain pointed to the Hetzner DNS nameservers and if you have a Fritz!Box
 you can user this docker container to update your changing IPs.
 
