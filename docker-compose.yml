@@ -1,0 +1,11 @@
+version: '3.3'
+services:
+    hetzner-dns-updater:
+        environment:
+            - user=youruser
+            - password=yourpass
+            - target_host=example.com
+            - api_key=hetznerapikey
+        ports:
+            - '8000:8000'
+        image: markush0/hetzner-dns-updater:latest
