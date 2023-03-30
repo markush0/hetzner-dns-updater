@@ -35,6 +35,12 @@ You can see the FastAPI-Docs at http://yourlocalip:8000/docs.
    3. Domain name is your dns-zone which will be updated
    4. User and password are the credentials which you can define in the docker-compose file
 
+
+You can test your instance with the following command
+````shell
+curl "http://yourlocalip:8000/ip/?user=youruser&password=yourpass&host=example.com&ip=120.123.32.11&ip6="
+````
+
 ---
 
 Alternatively you can run the container without docker-compose
