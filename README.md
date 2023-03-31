@@ -6,7 +6,7 @@
 [![Docker](https://github.com/markush0/hetzner-dns-updater/actions/workflows/docker-publish.yml/badge.svg)](https://github.com/markush0/hetzner-dns-updater/actions/workflows/docker-publish.yml)
 
 If you have the nameserver of your domain pointed to the Hetzner DNS nameservers and if you have a Fritz!Box
-you can user this docker container to update your changing IPs.
+you can use this docker container to update your changing IPs.
 
 This container creates a FastAPI-Instance which receives the date from the Frit!Box via GET-parameters.
 And then uses the Hetzner DNS-API to set the A-record of the given zone to your IP.
