@@ -58,70 +58,32 @@ def check_ip6(ip6):
     pass
 
 
-def get_all_records(zone_id, api_key):
+
+def update_record(zone_id, ip, api_key):
     try:
-        response = requests.get(
-            url="https://dns.hetzner.com/api/v1/records",
-            params={
-                "zone_id": zone_id,
-            },
-            headers={
-                "Auth-API-Token": api_key,
-            },
-        )
-        #print('Response HTTP Status Code: {status_code}'.format(
-        #    status_code=response.status_code))
-        #print('Response HTTP Response Body: {content}'.format(
-        #    content=response.content))
-        return json.loads(response.content)
-    except requests.exceptions.RequestException:
-        print('HTTP Request failed')
-
-
-def update_record(a_record_id, zone_id, ip, api_key):
-
-    try:
-        response = requests.put(
-            url="https://dns.hetzner.com/api/v1/records/"+a_record_id,
+        response = requests.post(
+            url="https://api.hetzner.cloud/v1/zones/" + str(zone_id) + "/rrsets/@/A/actions/set_records",
             headers={
                 "Content-Type": "application/json",
-                "Auth-API-Token": api_key,
+                "Authorization": "Bearer " + api_key,
             },
             data=json.dumps({
-                "value": ip,
-                "ttl": 0,
-                "type": "A",
-                "name": "@",
-                "zone_id": zone_id
+                "records": [{"value": ip}]
             })
         )
-        #print('Response HTTP Status Code: {status_code}'.format(
-        #    status_code=response.status_code))
-        #print('Response HTTP Response Body: {content}'.format(
-        #    content=response.content))
     except requests.exceptions.RequestException:
         print('HTTP Request failed')
-    pass
 
-
-def get_a_record_id(records):
-    for r in records['records']:
-        if r['type'] == 'A':
-            return r['id']
 
 
 def get_all_zones(api_key):
     try:
         response = requests.get(
-            url="https://dns.hetzner.com/api/v1/zones",
+            url="https://api.hetzner.cloud/v1/zones",
             headers={
-                "Auth-API-Token": api_key,
+                "Authorization": "Bearer " + api_key,
             },
         )
-        #print('Response HTTP Status Code: {status_code}'.format(
-        #    status_code=response.status_code))
-        #print('Response HTTP Response Body: {content}'.format(
-        #    content=response.content))
         return json.loads(response.content)
     except requests.exceptions.RequestException:
         print('HTTP Request failed')
@@ -136,9 +98,7 @@ def get_host_zone(zones, host):
 def call_api(host, ip, api_key):
     zones = get_all_zones(api_key)
     zone_id = get_host_zone(zones, host)
-    records = get_all_records(zone_id, api_key)
-    a_record_id = get_a_record_id(records)
-    update_record(a_record_id, zone_id, ip, api_key)
+    update_record(zone_id, ip, api_key)
     pass
 
 
