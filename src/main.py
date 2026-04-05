@@ -108,7 +108,7 @@ async def update_ip(user: str, password: str, host: str, ip: str, ip6: str = Non
         check_user(user, password)
         check_host(target_host, host)
         check_ip(ip)
-        if not ip6:
+        if ip6:
             check_ip6(ip6)
         print("Updated zone: " + target_host + " with IP: " + ip + " " + ip6)
         call_api(host, ip, api_key)
